@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BethanysPieShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BethanysPieShop.Controllers
@@ -16,12 +17,13 @@ namespace BethanysPieShop.Controllers
             _orderRepository = orderRepository;
             _shoppingCart = shoppingCart;
         }
-
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Checkout(Order order) {
             var items = _shoppingCart.GetShoppingCartItems();
