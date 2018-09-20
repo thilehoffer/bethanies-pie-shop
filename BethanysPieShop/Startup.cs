@@ -70,6 +70,11 @@ namespace BethanysPieShop
             if (env.IsDevelopment())
             {
                 DbInitializer.Seed(app);
+                app.UseDeveloperExceptionPage();
+                app.UseStatusCodePages();
+            }
+            else {
+                app.UseExceptionHandler("AppException");
             }
         }
     }
